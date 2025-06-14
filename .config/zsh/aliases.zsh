@@ -17,3 +17,4 @@ alias reload_custom_aliases='source '$CUSTOM_ALIASES
 extend_aliases() {echo 'export '$1 >> $CUSTOM_ALIASES}
 
 
+export df2=/usr/bin/git --git-dir=/Users/revanth/.dotfiles/ --work-tree=/Users/revanth
