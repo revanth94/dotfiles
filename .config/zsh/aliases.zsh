@@ -14,8 +14,8 @@ CUSTOM_ALIASES=~/.config/zsh/aliases.zsh
 alias view_custom_aliases='cat '$CUSTOM_ALIASES
 alias edit_custom_aliases='vi '$CUSTOM_ALIASES
 alias reload_custom_aliases='source '$CUSTOM_ALIASES
-extend_aliases() {echo 'export '$1 >> $CUSTOM_ALIASES}
+extend_aliases() {echo 'alias '$1 >> $CUSTOM_ALIASES}
 
 
-export df2=/usr/bin/git --git-dir=/Users/revanth/.dotfiles/ --work-tree=/Users/revanth
-export vi=vim
+alias df2="/usr/bin/git --git-dir=/Users/revanth/.dotfiles/ --work-tree=/Users/revanth"
+

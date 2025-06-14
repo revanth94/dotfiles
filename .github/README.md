@@ -25,6 +25,19 @@ alias df2="/usr/bin/git --git-dir="$HOME"/.dotfiles/ --work-tree="$HOME
 df2 config --local status.showUntrackedFiles no
 ```
 
+#### ZSH Setup
+
+[Oh my ZSH](https://ohmyz.sh/) is a great place to start customising zsh. ([Github Link](https://github.com/ohmyzsh/ohmyzsh/))
+
+
+Add the following into .zshrc to load custom scripts.
+```
+ZSH_CUSTOM=~/.config/zsh
+
+source $ZSH_CUSTOM/aliases.zsh
+source $ZSH_CUSTOM/scripting.zsh
+
+```
 
 
 #### Vim Setup
