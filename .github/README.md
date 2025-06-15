@@ -1,7 +1,7 @@
 
 # revanth94/dotfiles
 
-This is where I keep all of my dotfiles
+This is where I keep all of my customized [dotfiles](https://github.com/topics/dotfiles)
 
 ## Software I use
 - Operating System: MacOs
