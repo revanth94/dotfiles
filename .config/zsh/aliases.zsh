@@ -17,5 +17,21 @@ alias reload_custom_aliases='source '$CUSTOM_ALIASES
 extend_aliases() {echo 'alias '$1 >> $CUSTOM_ALIASES}
 
 
-alias df2="/usr/bin/git --git-dir=/Users/revanth/.dotfiles/ --work-tree=/Users/revanth"
+alias df2="/usr/bin/git --git-dir="$HOME"/.dotfiles --work-tree="$HOME
 
+
+
+# Maven
+
+alias mcp="mvn clean package"
+alias mp="mvn package"
+
+
+# Git
+
+alias gshow="git show --name-only --pretty=''"
+alias gs="git status"
+alias glog="git log"
+alias gf="git fetch"
+alias gp="git push"
+alias gcom="git commit -m"
