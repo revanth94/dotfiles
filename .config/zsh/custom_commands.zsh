@@ -9,12 +9,12 @@ alias switch_to_bash='chsh -s /bin/bash'
 
 
 # Custom commands and aliases
-CUSTOM_COMMANDS_FILE=~/custom_commands.zsh
+CUSTOM_COMMANDS_FILE=~/.config/zsh/custom_commands.zsh
 
 alias view_custom_commands='cat '$CUSTOM_COMMANDS_FILE
 alias edit_custom_commands='vi '$CUSTOM_COMMANDS_FILE
 
-alias bash_reload='source ~/.bash_profile'
+alias reload_custom_commands='source '$CUSTOM_COMMANDS_FILE
 
 function timer(){
 
@@ -93,4 +93,9 @@ function file_renamer () {
 	done
 	mv $tempdir/* $1
 	rmdir $tempdir
+}
+
+
+function oapp () {
+  open -a "$1" $2
 }
