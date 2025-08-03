@@ -1,12 +1,16 @@
 #!/bin/zsh
 
-# Using python to default to python3 (As python2 is not really used nowadays)
+# Python
+## Using python to default to python3 (As python2 is not really used nowadays)
 alias python='python3'
+alias python_format="python -m black ."
 
+# Terminals
 # Switch between bash and zsh
 alias switch_to_zsh='chsh -s /bin/zsh'
 alias switch_to_bash='chsh -s /bin/bash'
-
+alias pause_history='unset HISTFILE'
+alias sss='unset HISTFILE'
 
 # Custom commands and aliases
 CUSTOM_ALIASES=~/.config/zsh/aliases.zsh
