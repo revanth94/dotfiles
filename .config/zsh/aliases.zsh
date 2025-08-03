@@ -14,7 +14,7 @@ CUSTOM_ALIASES=~/.config/zsh/aliases.zsh
 alias view_custom_aliases='cat '$CUSTOM_ALIASES
 alias edit_custom_aliases='vi '$CUSTOM_ALIASES
 alias reload_custom_aliases='source '$CUSTOM_ALIASES
-extend_aliases() {echo 'alias '$1 >> $CUSTOM_ALIASES}
+extend_aliases() {echo "alias $1=\"$2\"" >> $CUSTOM_ALIASES}
 
 
 alias df2="/usr/bin/git --git-dir="$HOME"/.dotfiles --work-tree="$HOME
@@ -25,7 +25,7 @@ alias df2="/usr/bin/git --git-dir="$HOME"/.dotfiles --work-tree="$HOME
 
 alias mcp="mvn clean package"
 alias mp="mvn package"
-
+alias mci="mvn clean install"
 
 # Git
 
@@ -35,3 +35,8 @@ alias glog="git log"
 alias gf="git fetch"
 alias gp="git push"
 alias gcom="git commit -m"
+alias gc="git checkout"
+alias gcb="git checkout -b"
+alias maccy_stop="defaults write org.p0deje.Maccy ignoreEvents true"
+alias maccy_start="defaults write org.p0deje.Maccy ignoreEvents false"
+alias obsidian="open -a 'Obsidian'"
