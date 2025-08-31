@@ -17,9 +17,9 @@ alias reload_custom_commands='source '$CUSTOM_COMMANDS_FILE
 
 function timer(){
 
-	declare -i t=0; 
-	declare -t k=1; 
-	while true ; do t=$((t+k)) ; echo -ne "\r$t" ; sleep 1 ; done
+  declare -i t=0;
+  declare -t k=1;
+  while true ; do t=$((t+k)) ; echo -ne "\r$t" ; sleep 1 ; done
 
 }
 
@@ -28,3 +28,16 @@ mkcd () { mkdir "$1" && cd "$1"; }
 function oapp () {
   open -a "$1" $2
 }
+
+_oapp() {
+  local -a apps
+  for app in "${(f)"$(ls /Applications )"}"; do
+    appname="${app%.*}"
+    appname="${appname##*/}"
+    apps+=("$appname")
+  done
+  compadd -Q -- "${apps[@]}"
+}
+
+# complete -F _oapp oapp
+
