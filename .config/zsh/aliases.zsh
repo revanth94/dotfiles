@@ -5,8 +5,11 @@
 alias python='python3'
 alias python_format="python -m black ."
 
+<<<<<<< HEAD
 alias load_venv="source .venv/bin/activate"
 
+=======
+>>>>>>> master
 # Terminals
 # Switch between bash and zsh
 alias switch_to_zsh='chsh -s /bin/zsh'
