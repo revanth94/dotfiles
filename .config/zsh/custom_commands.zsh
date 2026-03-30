@@ -27,6 +27,7 @@ mkcd () { mkdir "$1" && cd "$1"; }
 
 function oapp () {
   open -a "$1" $2
+<<<<<<< HEAD
 }
 
 _oapp() {
@@ -40,6 +41,19 @@ _oapp() {
 }
 
 
+=======
+}
+
+_oapp() {
+  local -a apps
+  for app in "${(f)"$(ls /Applications )"}"; do
+    appname="${app%.*}"
+    appname="${appname##*/}"
+    apps+=("$appname")
+  done
+  compadd -Q -- "${apps[@]}"
+}
+>>>>>>> 970fe53cc0e7f75889f1be34a466d4a36f7806fa
 
 # complete -F _oapp oapp
 
