@@ -39,5 +39,7 @@ _oapp() {
   compadd -Q -- "${apps[@]}"
 }
 
+
+
 # complete -F _oapp oapp
 

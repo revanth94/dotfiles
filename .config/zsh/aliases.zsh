@@ -5,6 +5,8 @@
 alias python='python3'
 alias python_format="python -m black ."
 
+alias load_venv="source .venv/bin/activate"
+
 # Terminals
 # Switch between bash and zsh
 alias switch_to_zsh='chsh -s /bin/zsh'
@@ -41,6 +43,18 @@ alias gp="git push"
 alias gcom="git commit -m"
 alias gc="git checkout"
 alias gcb="git checkout -b"
+
+# History
 alias maccy_stop="defaults write org.p0deje.Maccy ignoreEvents true"
 alias maccy_start="defaults write org.p0deje.Maccy ignoreEvents false"
+
+# Shortcuts
 alias obsidian="open -a 'Obsidian'"
+alias cursor="oapp cursor"
+alias editor="cursor"
+
+RECIPES_FOLDER=/Users/revanth/Projects/Learning/quality_of_life
+alias scrape_recipes="cd $RECIPES_FOLDER && editor ."
+alias view_recipes="obsidian '$RECIPES_FOLDER/recipes'"
+
+
