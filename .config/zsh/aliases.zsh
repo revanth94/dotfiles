@@ -20,21 +20,44 @@ CUSTOM_ALIASES=~/.config/zsh/aliases.zsh
 alias view_custom_aliases='cat '$CUSTOM_ALIASES
 alias edit_custom_aliases='vi '$CUSTOM_ALIASES
 alias reload_custom_aliases='source '$CUSTOM_ALIASES
-extend_aliases() {echo "alias $1=\"$2\"" >> $CUSTOM_ALIASES}
+
+function extend_aliases() {
+  [[ -n "${CUSTOM_ALIASES:-}" ]] || return 1
+  (( $# == 2 )) || return 1
+  [[ -n "$1" && -n "$2" ]] || return 1
+  print -r -- "alias ${(q)1}=${(q)2}" >> "$CUSTOM_ALIASES"
+}
+
+_extend_aliases() {
+  _arguments \
+    '1:alias name:_nothing' \
+    '2:command:_command_names'
+}
+compdef _extend_aliases extend_aliases
 
 
+# Dotfiles
 alias df2="/usr/bin/git --git-dir="$HOME"/.dotfiles --work-tree="$HOME
+compdef _git df2=git
 
-
+# Add this to ~/.zshrc
+chpwd_functions+=(check_dotfiles_dir)
+function check_dotfiles_dir() {
+  if [[ "$PWD" == "$HOME/.config"* ]]; then
+    export GIT_DIR="$HOME/.dotfiles"
+    export GIT_WORK_TREE="$HOME"
+  else
+    unset GIT_DIR
+    unset GIT_WORK_TREE
+  fi
+}
 
 # Maven
-
 alias mcp="mvn clean package"
 alias mp="mvn package"
 alias mci="mvn clean install"
 
 # Git
-
 alias gshow="git show --name-only --pretty=''"
 alias gs="git status"
 alias glog="git log"
@@ -53,8 +76,12 @@ alias obsidian="open -a 'Obsidian'"
 alias cursor="oapp cursor"
 alias editor="cursor"
 
+
+## Recipes and health
 RECIPES_FOLDER=/Users/revanth/Projects/Learning/quality_of_life
-alias scrape_recipes="cd $RECIPES_FOLDER && editor ."
+alias scrape_recipes="editor $RECIPES_FOLDER"
 alias view_recipes="obsidian '$RECIPES_FOLDER/recipes'"
 
+## Misc
 
+alias ril="append_read_later"

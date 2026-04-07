@@ -25,19 +25,40 @@ function timer(){
 
 mkcd () { mkdir "$1" && cd "$1"; }
 
-function oapp () {
-  open -a "$1" $2
+# Open App
+oapp() {
+  open -a "$1" ${2:+"$2"}
 }
 
 _oapp() {
-  local -a apps
-  for app in "${(f)"$(ls /Applications )"}"; do
-    appname="${app%.*}"
-    appname="${appname##*/}"
-    apps+=("$appname")
-  done
-  compadd -Q -- "${apps[@]}"
+  _arguments \
+    '1:application:_mac_applications' \
+    '2:file or directory:_files'
 }
 
-# complete -F _oapp oapp
+compdef _oapp oapp
 
+export WORK_PROJECTS="$HOME/Projects/Work/"
+export EXPERIMENTS="$HOME/Projects/Learning/experiments"
+
+# Open Work
+opw() {
+  editor $WORK_PROJECTS$1
+}
+
+_opw() {
+  _path_files -W $WORK_PROJECTS -/
+}
+compdef _opw opw
+
+# ReadItLater
+
+append_read_later() {
+  local line="${1:-$(pbpaste)}"
+
+#  local file="$HOME/testwrite"
+  local file="/Users/revanth/Library/Mobile Documents/iCloud~md~obsidian/Documents/Read Later/Unprocessed.md"
+  echo "Writing $line to $file"
+
+  printf '%s\n' "$line" >> "$file"
+}
