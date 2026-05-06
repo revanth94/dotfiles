@@ -11,7 +11,7 @@ alias python='python3'
 # Custom commands and aliases
 CUSTOM_COMMANDS_FILE=~/.config/zsh/custom_commands.zsh
 
-alias view_custom_commands='cat '$CUSTOM_COMMANDS_FILE
+alias view_custom_commands='vi -R '$CUSTOM_COMMANDS_FILE
 alias edit_custom_commands='vi '$CUSTOM_COMMANDS_FILE
 alias reload_custom_commands='source '$CUSTOM_COMMANDS_FILE
 
@@ -38,18 +38,29 @@ _oapp() {
 
 compdef _oapp oapp
 
-export WORK_PROJECTS="$HOME/Projects/Work/"
+export WORK_PROJECTS="$HOME/Projects/Work"
 export EXPERIMENTS="$HOME/Projects/Learning/experiments"
 
 # Open Work
+
+opcd() {
+  cd $WORK_PROJECTS/$1
+}
+
 opw() {
-  editor $WORK_PROJECTS$1
+  editor $WORK_PROJECTS/$1
+}
+
+opwcd() {
+  cd $WORK_PROJECTS/$1 && editor .;
 }
 
 _opw() {
   _path_files -W $WORK_PROJECTS -/
 }
 compdef _opw opw
+compdef _opw opcd
+compdef _opw opwcd
 
 # ReadItLater
 
